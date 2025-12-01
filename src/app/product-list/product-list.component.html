@@ -1,7 +1,7 @@
 <div class="container py-4">
   <div class="d-flex justify-content-between align-items-center mb-3">
-    <h1 class="h4">lista de produtos</h1>
-    <button class="btn btn-primary">novo produto</button>
+    <h1 class="h4">Lista de produtos</h1>
+    <button class="btn btn-primary" (click)="onNew()">novo produto</button>
   </div>
 
   @if (loading) {
@@ -17,7 +17,7 @@
         <th>Nome</th>
         <th>Preço</th>
         <th>Código de Barras</th>
-        <th>Ações</th>
+        <th class="text-end">Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -27,8 +27,12 @@
         <td>{{ product.price | currency : "BRL" }}</td>
         <td>{{ product.barcode }}</td>
         <td>
-          <button class="btn btn-sm btn-warning me-2">Editar</button>
-          <button class="btn btn-sm btn-danger">Excluir</button>
+          <button class="btn btn-sm btn-warning me-2" (click)="onEdit(product)">
+            Editar
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="onDelete(product)">
+            Excluir
+          </button>
         </td>
       </tr>
       }
