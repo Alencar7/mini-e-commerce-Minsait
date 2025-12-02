@@ -1,8 +1,44 @@
 <div class="container py-4">
   <div class="d-flex justify-content-between align-items-center mb-3">
-    <h1 class="h4">lista de produtos</h1>
-    <button class="btn btn-primary">novo produto</button>
+    <h1 class="h4">Lista de produtos</h1>
+    <button class="btn btn-primary" (click)="onNew()">novo produto</button>
   </div>
 
-  <p>tabela de produtos</p>
+  @if (loading) {
+  <div class="alert alert-info">Carregando produtos...</div>
+  } @if (errorMessage) {
+  <div class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+  } @if (!loading && !errorMessage && products.length > 0) {
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Preço</th>
+        <th>Código de Barras</th>
+        <th class="text-end">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of products; track product.id ) {
+      <tr>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price | currency : "BRL" }}</td>
+        <td>{{ product.barcode }}</td>
+        <td>
+          <button class="btn btn-sm btn-warning me-2" (click)="onEdit(product)">
+            Editar
+          </button>
+          <button class="btn btn-sm btn-danger" (click)="onDelete(product)">
+            Excluir
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  } @else if (!loading && !errorMessage) {
+  <div class="alert alert-secondary">Nenhum produto encontrado...</div>
+  }
 </div>

@@ -1,1 +1,66 @@
-<p>product-form works!</p>
+<div class="container py-4">
+  <h1 class="h4 mb-3">
+    {{ isEditMode ? "Editar Produto" : "Novo Produto" }}
+  </h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <!-- Nome -->
+    <div class="mb-3">
+      <label for="name" class="form-label">Nome</label>
+      <input
+        id="name"
+        type="text"
+        class="form-control"
+        formControlName="name"
+        [class.is-invalid]="name?.invalid && (name?.touched || name?.dirty)"
+      />
+      @if (name?.hasError('required')) {
+      <div class="invalid-feedback">O nome é obrigatório!</div>
+      }
+    </div>
+
+    <!-- Preço -->
+    <div class="mb-3">
+      <label for="price" class="form-label">Preço</label>
+      <input
+        id="price"
+        type="number"
+        class="form-control"
+        formControlName="price"
+        step="0.01"
+        [class.is-invalid]="price?.invalid && (price?.touched || price?.dirty)"
+      />
+      @if (price?.hasError('required')) {
+      <div class="invalid-feedback">Preço é obrigatório!</div>
+      } @if (price?.hasError('min')) {
+      <div class="invalid-feedback">O preço deve ser maior que zero!</div>
+      }
+    </div>
+
+    <!-- Código de Barras -->
+    <div class="mb-3">
+      <label for="barcode" class="form-label">Código de Barras</label>
+      <input
+        id="barcode"
+        type="text"
+        class="form-control"
+        formControlName="barcode"
+        [class.is-invalid]="
+          barcode?.invalid && (barcode?.touched || barcode?.dirty)
+        "
+      />
+      @if (barcode?.hasError('required')) {
+      <div class="invalid-feedback">Código de barras é obrigatório.</div>
+      }
+    </div>
+
+    <!-- Botões -->
+    <div class="d-flex justify-content-end gap-2">
+      <button type="button" class="btn btn-secondary" (click)="onCancel()">
+        Cancelar
+      </button>
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+        {{ isEditMode ? "Salvar alterações" : "Cadastrar" }}
+      </button>
+    </div>
+  </form>
+</div>
