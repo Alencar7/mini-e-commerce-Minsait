@@ -15,7 +15,7 @@ export class ProductService {
 
   //get all products
   getAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.apiUrl); // GET /v1/products/
+    return this.http.get<Product[]>(`${this.apiUrl}/`); // GET /v1/products/
   }
   //get product by id
   getProductById(id: number): Observable<Product> {
@@ -26,8 +26,9 @@ export class ProductService {
     return this.http.post<Product>(`${this.apiUrl}/product`, product); // POST /v1/products/product
   }
   //update product
-  updateProduct(id: number, product: Product): Observable<Product> {
-    return this.http.put<Product>(`${this.apiUrl}/update`, product); // PUT /v1/products/update
+  updateProduct(product: Product): Observable<Product> {
+    // return this.http.put<Product>(`${this.apiUrl}/update/${id}`, product); // PUT /v1/products/update
+    return this.http.put<Product>(`${this.apiUrl}/update`, product); // PUT /v1/products/{id}
   }
   //delete product
   deleteProduct(id: number): Observable<void> {
