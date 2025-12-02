@@ -5,7 +5,9 @@
   </div>
 
   @if (loading) {
-  <div class="alert alert-info">Carregando produtos...</div>
+  <div class="alert alert-info">
+    Um momento, estamos carregando os produtos...
+  </div>
   } @if (errorMessage) {
   <div class="alert alert-danger">
     {{ errorMessage }}
@@ -27,6 +29,12 @@
         <td>{{ product.price | currency : "BRL" }}</td>
         <td>{{ product.barcode }}</td>
         <td>
+          <button
+            class="btn btn-sm btn-success me-2"
+            (click)="onAddToCart(product)"
+          >
+            Adicionar ao carrinho
+          </button>
           <button class="btn btn-sm btn-warning me-2" (click)="onEdit(product)">
             Editar
           </button>

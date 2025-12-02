@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+
 import { ProductService } from '../product.service';
 import { Product } from '../models/product.model';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-product-list',
@@ -13,10 +16,14 @@ import { Product } from '../models/product.model';
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
-  loading: boolean = false; //ajustar
+  loading: boolean = false;
   errorMessage = '';
 
-  constructor(private productService: ProductService, private router: Router) {}
+  constructor(
+    private productService: ProductService,
+    private router: Router,
+    private cartService: CartService
+  ) {}
 
   ngOnInit(): void {
     this.loadProducts();
@@ -32,7 +39,7 @@ export class ProductListComponent implements OnInit {
         this.loading = false;
         console.log('Produtos carregados:', data);
       },
-      error: (error) => {
+      error: (error: HttpErrorResponse) => {
         console.error('Erro ao carregar produtos:', error);
         this.errorMessage = 'Erro ao carregar produtos.';
         this.loading = false;
@@ -46,7 +53,7 @@ export class ProductListComponent implements OnInit {
 
   onEdit(product: Product) {
     if (!product.id) return;
-    this.router.navigate([`/products/edit/${product.id}`]);
+    this.router.navigate(['/products/edit', product.id]);
   }
 
   onDelete(product: Product) {
@@ -61,10 +68,15 @@ export class ProductListComponent implements OnInit {
       next: () => {
         this.products = this.products.filter((p) => p.id !== product.id);
       },
-      error: (error) => {
+      error: (error: HttpErrorResponse) => {
         console.error('Erro ao excluir produto:', error);
         alert('Erro ao excluir produto.');
       },
     });
+  }
+
+  onAddToCart(product: Product) {
+    this.cartService.addToCart(product);
+    alert(`Produto "${product.name}" adicionado ao carrinho.`);
   }
 }

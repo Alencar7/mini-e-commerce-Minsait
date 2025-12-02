@@ -28,11 +28,11 @@ export class CartService {
 
   //extra
   //valor total do carrinho como Observable => legal para exibir o total dinamicamente
-  readonly cartTotal$: Observable<number> = this.cartItems$.pipe(
-    map((items: CartItem[]) =>
-      items.reduce((sum, item) => sum + item.product.price * item.quantity, 0)
-    )
-  );
+  // readonly cartTotal$: Observable<number> = this.cartItems$.pipe(
+  //   map((items: CartItem[]) =>
+  //     items.reduce((sum, item) => sum + item.product.price * item.quantity, 0)
+  //   )
+  // );
 
   constructor() {}
 
@@ -59,12 +59,12 @@ export class CartService {
 
     if (existingItem) {
       existingItem.quantity++;
-      console.log(
-        `Quantidade do produto "${product.name}" aumentada para ${existingItem.quantity}.`
-      );
+      // console.log(
+      //   `Quantidade do produto "${product.name}" aumentada para ${existingItem.quantity}.`
+      // );
     } else {
       currentItems.push({ product, quantity: 1 });
-      console.log(`Produto "${product.name}" adicionado ao carrinho.`);
+      // console.log(`Produto "${product.name}" adicionado ao carrinho.`);
     }
 
     //atualiza o estado do carrinho
@@ -77,7 +77,7 @@ export class CartService {
       (item) => item.product.id !== productId
     );
 
-    console.log(`Produto com ID ${productId} removido do carrinho.`);
+    //console.log(`Produto com ID ${productId} removido do carrinho.`);
     this.updateState(currentItems);
   }
 

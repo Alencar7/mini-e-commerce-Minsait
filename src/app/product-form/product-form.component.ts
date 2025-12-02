@@ -90,7 +90,7 @@ export class ProductFormComponent implements OnInit {
 
       this.productService.updateProduct(productToUpdate).subscribe({
         next: () => {
-          alert('Produto atualizado com sucesso!');
+          //alert('Produto atualizado com sucesso!');
           this.router.navigate(['/products']);
         },
         error: (error: HttpErrorResponse) => {
