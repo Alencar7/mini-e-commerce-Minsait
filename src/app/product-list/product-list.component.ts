@@ -6,11 +6,12 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ProductService } from '../product.service';
 import { Product } from '../models/product.model';
 import { CartService } from '../cart.service';
+import { ProductTableComponent } from '../product-table/product-table.component';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, ProductTableComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css',
 })
@@ -77,6 +78,5 @@ export class ProductListComponent implements OnInit {
 
   onAddToCart(product: Product) {
     this.cartService.addToCart(product);
-    //alert(`Produto "${product.name}" adicionado ao carrinho.`);
   }
 }
