@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { CartItem } from '../models/cart-item.model';
 import { CartService } from '../cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -13,8 +14,12 @@ import { CartService } from '../cart.service';
 export class CartComponent implements OnInit {
   cartItems: CartItem[] = [];
   total: number = 0;
+  isProcessing: boolean = false;
 
-  constructor(private readonly cartService: CartService) {}
+  constructor(
+    private readonly cartService: CartService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.cartService.cartItems$.subscribe((items: CartItem[]) => {
@@ -35,10 +40,20 @@ export class CartComponent implements OnInit {
     this.cartService.updateQuantity(productId, quantity);
   }
 
-  onBuy(): void {
-    if (!this.cartItems.length) {
+  //extra
+  // add funcao de compra
+  onBuy() {
+    if (!this.cartItems.length || this.isProcessing) {
       return;
     }
+
+    this.isProcessing = false;
+    // simular o processo de compra
+    setTimeout(() => {
+      this.isProcessing = false;
+      this.router.navigate(['']);
+    }, 2000);
+
     alert('Compra realizada com sucesso!');
     this.cartService.clearCart();
   }
