@@ -34,4 +34,12 @@ export class CartComponent implements OnInit {
   updateQuantity(productId: number, quantity: number) {
     this.cartService.updateQuantity(productId, quantity);
   }
+
+  onBuy(): void {
+    if (!this.cartItems.length) {
+      return;
+    }
+    alert('Compra realizada com sucesso!');
+    this.cartService.clearCart();
+  }
 }

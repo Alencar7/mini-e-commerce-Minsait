@@ -39,6 +39,11 @@
       Esvaziar Carrinho
     </button>
     <h2 class="h5 mb-0">Total: {{ total | currency : "BRL" }}</h2>
+
+    <!-- add botao de compra -->
+    <button class="btn btn-success" [disabled]="cartItems.length === 0">
+      Comprar
+    </button>
   </div>
   } @else {
   <div class="alert alert-secondary">Seu carrinho está vazio.</div>
