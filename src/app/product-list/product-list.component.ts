@@ -20,9 +20,9 @@ export class ProductListComponent implements OnInit {
   errorMessage = '';
 
   constructor(
-    private productService: ProductService,
-    private router: Router,
-    private cartService: CartService
+    private readonly productService: ProductService,
+    private readonly router: Router,
+    private readonly cartService: CartService
   ) {}
 
   ngOnInit(): void {
