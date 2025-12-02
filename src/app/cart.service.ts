@@ -28,11 +28,11 @@ export class CartService {
 
   //extra
   //valor total do carrinho como Observable => legal para exibir o total dinamicamente
-  // readonly cartTotal$: Observable<number> = this.cartItems$.pipe(
-  //   map((items: CartItem[]) =>
-  //     items.reduce((sum, item) => sum + item.product.price * item.quantity, 0)
-  //   )
-  // );
+  readonly cartTotal$: Observable<number> = this.cartItems$.pipe(
+    map((items: CartItem[]) =>
+      items.reduce((sum, item) => sum + item.product.price * item.quantity, 0)
+    )
+  );
 
   constructor() {}
 
