@@ -59,12 +59,8 @@ export class CartService {
 
     if (existingItem) {
       existingItem.quantity++;
-      // console.log(
-      //   `Quantidade do produto "${product.name}" aumentada para ${existingItem.quantity}.`
-      // );
     } else {
       currentItems.push({ product, quantity: 1 });
-      // console.log(`Produto "${product.name}" adicionado ao carrinho.`);
     }
 
     //atualiza o estado do carrinho
@@ -77,7 +73,6 @@ export class CartService {
       (item) => item.product.id !== productId
     );
 
-    //console.log(`Produto com ID ${productId} removido do carrinho.`);
     this.updateState(currentItems);
   }
 
@@ -103,7 +98,7 @@ export class CartService {
     }
   }
   // limpa o carrinho
-  clearCart(): void {
+  clearCart() {
     console.log('Carrinho limpo.');
     this.updateState([]);
   }
