@@ -1,12 +1,60 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule, CurrencyPipe } from '@angular/common';
+import { CartItem } from '../models/cart-item.model';
+import { CartService } from '../cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [],
+  imports: [CurrencyPipe],
   templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css'
+  styleUrl: './cart.component.css',
 })
-export class CartComponent {
+export class CartComponent implements OnInit {
+  cartItems: CartItem[] = [];
+  total: number = 0;
+  isProcessing: boolean = false;
 
+  constructor(
+    private readonly cartService: CartService,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    this.cartService.cartItems$.subscribe((items: CartItem[]) => {
+      this.cartItems = items;
+      this.total = this.cartService.getTotal();
+    });
+  }
+
+  removeItem(productId: number) {
+    this.cartService.removeFromCart(productId);
+  }
+
+  clear() {
+    this.cartService.clearCart();
+  }
+
+  updateQuantity(productId: number, quantity: number) {
+    this.cartService.updateQuantity(productId, quantity);
+  }
+
+  //extra
+  // add funcao de compra
+  onBuy() {
+    if (!this.cartItems.length || this.isProcessing) {
+      return;
+    }
+
+    this.isProcessing = false;
+    // simular o processo de compra
+    setTimeout(() => {
+      this.isProcessing = false;
+      this.router.navigate(['']);
+    }, 2000);
+
+    alert('Compra realizada com sucesso!');
+    this.cartService.clearCart();
+  }
 }

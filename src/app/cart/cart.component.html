@@ -1,4 +1,58 @@
 <div class="container py-4">
-  <h1 class="h4">Carrinho de Compras</h1>
-  <p>itens do carrinho</p>
+  <h1 class="h4 mb-3">Carrinho de Compras</h1>
+
+  @if (cartItems.length > 0) {
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Produto</th>
+        <th>Preço</th>
+        <th>Quantidade</th>
+        <th>Subtotal</th>
+        <th class="text-end">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of cartItems; track item.product.id) {
+      <tr>
+        <td>{{ item.product.name }}</td>
+        <td>{{ item.product.price | currency : "BRL" }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>
+          {{ item.product.price * item.quantity | currency : "BRL" }}
+        </td>
+        <td class="text-end">
+          <button
+            class="btn btn-sm btn-danger"
+            (click)="removeItem(item.product.id!)"
+          >
+            Remover
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-between align-items-center mt-3">
+    <button class="btn btn-outline-danger" (click)="clear()">
+      Esvaziar Carrinho
+    </button>
+    <h2 class="h5 mb-0">Total: {{ total | currency : "BRL" }}</h2>
+    <!-- add botao de comprar -->
+    <button
+      class="btn btn-success"
+      (click)="onBuy()"
+      [disabled]="cartItems.length === 0"
+    >
+      Comprar
+    </button>
+  </div>
+  } @else {
+  <div class="alert alert-secondary">Seu carrinho está vazio.</div>
+  } @if (isProcessing) {
+  <div class="alert alert-info mt-3">
+    Sua compra está sendo processada... Por favor, aguarde.
+  </div>
+  }
 </div>

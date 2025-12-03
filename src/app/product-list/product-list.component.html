@@ -5,13 +5,15 @@
   </div>
 
   @if (loading) {
-  <div class="alert alert-info">Carregando produtos...</div>
+  <div class="alert alert-info">
+    Um momento, estamos carregando os produtos...
+  </div>
   } @if (errorMessage) {
   <div class="alert alert-danger">
     {{ errorMessage }}
   </div>
-  } @if (!loading && !errorMessage && products.length > 0) {
-  <table class="table table-striped">
+  } @if (!loading && products.length > 0) {
+  <!-- <table class="table table-striped">
     <thead>
       <tr>
         <th>Nome</th>
@@ -21,24 +23,38 @@
       </tr>
     </thead>
     <tbody>
-      @for (product of products; track product.id ) {
+      @for (item of products; track item.id ) {
       <tr>
-        <td>{{ product.name }}</td>
-        <td>{{ product.price | currency : "BRL" }}</td>
-        <td>{{ product.barcode }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.price | currency : "BRL" }}</td>
+        <td>{{ item.barcode }}</td>
         <td>
-          <button class="btn btn-sm btn-warning me-2" (click)="onEdit(product)">
+          <button
+            class="btn btn-sm btn-success me-2"
+            (click)="onAddToCart(item)"
+          >
+            Adicionar ao carrinho
+          </button>
+          <button class="btn btn-sm btn-warning me-2" (click)="onEdit(item)">
             Editar
           </button>
-          <button class="btn btn-sm btn-danger" (click)="onDelete(product)">
+          <button class="btn btn-sm btn-danger" (click)="onDelete(item)">
             Excluir
           </button>
         </td>
       </tr>
       }
     </tbody>
-  </table>
-  } @else if (!loading && !errorMessage) {
-  <div class="alert alert-secondary">Nenhum produto encontrado...</div>
+  </table> -->
+  <app-product-table
+    [products]="products"
+    (addToCart)="onAddToCart($event)"
+    (edit)="onEdit($event)"
+    (delete)="onDelete($event)"
+  ></app-product-table>
+  } @else if (!loading && !errorMessage && products.length === 0) {
+  <div class="alert alert-secondary">
+    Ops... Nenhum produto foi encontrado...
+  </div>
   }
 </div>

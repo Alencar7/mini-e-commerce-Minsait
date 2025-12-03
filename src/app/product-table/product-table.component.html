@@ -1,1 +1,30 @@
-<p>product-table works!</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Preço</th>
+      <th>Código de Barras</th>
+      <th class="text-end">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (item of products; track item.id) {
+    <tr>
+      <td>{{ item.name }}</td>
+      <td>{{ item.price | currency : "BRL" }}</td>
+      <td>{{ item.barcode }}</td>
+      <td class="text-end">
+        <button class="btn btn-sm btn-success me-2" (click)="onAddToCart(item)">
+          Adicionar ao Carrinho
+        </button>
+        <button class="btn btn-sm btn-secondary me-2" (click)="onEdit(item)">
+          Editar
+        </button>
+        <button class="btn btn-sm btn-danger" (click)="onDelete(item)">
+          Excluir
+        </button>
+      </td>
+    </tr>
+    }
+  </tbody>
+</table>
