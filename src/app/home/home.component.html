@@ -1,4 +1,53 @@
-<div class="container py-4">
-  <h1 class="h3">Bem-vindo ao Mini E-Commerce da Minsait</h1>
-  <p>Use o menu para navegar entre produtos e carrinho.</p>
+<!-- hero -->
+<section class="container my-6">
+  <div class="hero-box text-center py-4 px-3">
+    <h1 class="hero-title mb-2">Seja bem-vindo!</h1>
+    <h1 class="hero-title mb-2">Este é o e-commerce da Minsait</h1>
+
+    <p class="hero-text mb-1">
+      Use o menu para navegar entre os produtos e o seu carrinho
+    </p>
+    <p class="hero-text mb-0">Aqui você encontra de tudo um pouco</p>
+  </div>
+</section>
+
+<!-- cards -->
+<section class="container my-5">
+  <h2 class="text-center mb-4">Produtos em destaque</h2>
+
+  <div class="row g-4 justify-content-center">
+    @for (product of productCards; track product.id) {
+    <div class="col-12 col-sm-6 col-md-3">
+      <div class="card product-card h-100 text-center">
+        <img
+          [src]="product.imageUrl"
+          [attr.alt]="product.name || 'Imagem do produto'"
+          class="card-img-top product-card__img"
+        />
+
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title mb-1">{{ product.name }}</h5>
+
+          <p class="product-card__price mb-3">R$ {{ product.price }}</p>
+
+          <div class="mt-auto d-grid gap-2">
+            <button
+              class="btn btn-outline-secondary btn-sm"
+              (click)="goToProducts()"
+            >
+              Ver produto
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</section>
+
+<!-- botao add-produtos -->
+<div class="text-center mt-4">
+  <button class="btn btn-add-product" (click)="onNewProduct()">
+    Adicionar produto
+  </button>
 </div>
