@@ -1,0 +1,79 @@
+/* form mais compacto e centraliz */
+.container {
+  max-width: 640px;
+  margin-top: 1.5rem;
+}
+
+/* title */
+h1.h4 {
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+  color: #000000;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #111827;
+}
+
+.form-control {
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  box-shadow: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-control:focus {
+  border-color: #351652;
+  box-shadow: 0 0 0 2px rgba(81, 35, 124, 0.25);
+}
+
+.form-control.is-invalid {
+  border-color: #dc2626;
+}
+
+.invalid-feedback {
+  font-size: 0.85rem;
+}
+
+.d-flex.justify-content-end.gap-2 {
+  margin-top: 1.25rem;
+}
+
+/* cancelar */
+.btn-secondary {
+  background-color: #e4e2e2e8;
+  border-color: #51237c;
+  color: #000000;
+  font-weight: 600;
+  padding: 0.45rem 1.2rem;
+}
+
+.btn-secondary:hover {
+  background-color: #ac3232cb;
+  border-color: #51237c;
+  color: #ffffff;
+}
+
+/* cadastrar / salvar */
+.btn-primary {
+  background-color: #51237c;
+  border-color: #51237c;
+  color: #fafafa;
+  font-weight: 600;
+  padding: 0.45rem 1.4rem;
+}
+
+.btn-primary:hover {
+  background-color: #381855;
+  border-color: #6b0792;
+  color: #ffffff;
+}
+
+.btn-primary:disabled,
+.btn-primary:disabled:hover {
+  background-color: #e5e7eb;
+  border-color: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+}

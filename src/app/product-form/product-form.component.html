@@ -30,9 +30,9 @@
         [class.is-invalid]="price?.invalid && (price?.touched || price?.dirty)"
       />
       @if (price?.hasError('required')) {
-      <div class="invalid-feedback">Preço é obrigatório!</div>
+      <div class="invalid-feedback">O preço é obrigatório!</div>
       } @if (price?.hasError('min')) {
-      <div class="invalid-feedback">O preço deve ser maior que zero!</div>
+      <div class="invalid-feedback">O valor deve ser maior que zero!</div>
       }
     </div>
 
