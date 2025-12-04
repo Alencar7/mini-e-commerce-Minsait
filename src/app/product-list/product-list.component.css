@@ -1,0 +1,73 @@
+/* container da página de lista de produtos */
+.container {
+  max-width: 960px; /* deixa o conteúdo mais compacto */
+  margin-top: 1.5rem;
+}
+
+/* linha entre a lista de produtos + botão */
+.d-flex.justify-content-between.align-items-center {
+  border-bottom: 1px solid rgba(81, 35, 124, 0.25);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+h1.h4 {
+  margin: 0;
+  font-weight: 600;
+  color: #000000;
+  font-size: 2rem;
+}
+
+/* botao add  */
+button.btn.btn-primary {
+  background-color: #ebebebab;
+  border-color: #51237c;
+  color: #51237c;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  border-radius: 500px; /* pílula */
+  transition: background-color 0.25s ease, border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+button.btn.btn-primary:hover {
+  background-color: #51237c;
+  color: #ffffff;
+  border-color: #51237c;
+  box-shadow: 0 8px 18px rgba(67, 4, 150, 0.35);
+}
+
+/* visual componente de tabela */
+app-product-table {
+  display: block;
+  margin-top: 0.5rem;
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.06);
+  padding: 0.75rem;
+}
+
+/* loading */
+.alert.alert-info {
+  border-radius: 0.75rem;
+  border: 1px solid rgba(81, 35, 124, 0.25);
+  background-color: #ede9fe;
+  color: #111827;
+}
+
+/* erro */
+.alert.alert-danger {
+  border-radius: 0.75rem;
+  border: 1px solid #b91c1c;
+  background-color: #fee2e2;
+  color: #7f1d1d;
+}
+
+/* nenhum produto encontrado */
+.alert.alert-secondary {
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  color: #4b5563;
+}
