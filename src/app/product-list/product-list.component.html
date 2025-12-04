@@ -1,7 +1,7 @@
 <div class="container py-4">
   <div class="d-flex justify-content-between align-items-center mb-3">
     <h1 class="h4">Lista de produtos</h1>
-    <button class="btn btn-primary" (click)="onNew()">novo produto</button>
+    <button class="btn btn-primary" (click)="onNew()">Adicionar produto</button>
   </div>
 
   @if (loading) {
@@ -13,39 +13,7 @@
     {{ errorMessage }}
   </div>
   } @if (!loading && products.length > 0) {
-  <!-- <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Preço</th>
-        <th>Código de Barras</th>
-        <th class="text-end">Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (item of products; track item.id ) {
-      <tr>
-        <td>{{ item.name }}</td>
-        <td>{{ item.price | currency : "BRL" }}</td>
-        <td>{{ item.barcode }}</td>
-        <td>
-          <button
-            class="btn btn-sm btn-success me-2"
-            (click)="onAddToCart(item)"
-          >
-            Adicionar ao carrinho
-          </button>
-          <button class="btn btn-sm btn-warning me-2" (click)="onEdit(item)">
-            Editar
-          </button>
-          <button class="btn btn-sm btn-danger" (click)="onDelete(item)">
-            Excluir
-          </button>
-        </td>
-      </tr>
-      }
-    </tbody>
-  </table> -->
+
   <app-product-table
     [products]="products"
     (addToCart)="onAddToCart($event)"
