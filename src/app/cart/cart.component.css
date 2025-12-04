@@ -1,0 +1,41 @@
+/*  Esvaziar | Total | Comprar */
+.d-flex.justify-content-between.align-items-center.mt-3 {
+  justify-content: flex-start;
+  gap: 0.75rem;
+}
+
+/* empurra o valor total pra direita*/
+.d-flex.justify-content-between.align-items-center.mt-3 h2 {
+  margin-left: auto;
+}
+
+/* botao comprar */
+.btn-success {
+  background-color: #ffffff;
+  border-color: #51237c;
+  color: #51237c;
+  font-weight: 600;
+  padding: 0.45rem 1.4rem;
+}
+
+.btn-success:hover {
+  background-color: #51237c;
+  border-color: #6b0792;
+  color: #ffffff;
+}
+
+/* botao esvaziar */
+.btn-outline-danger {
+  background-color: #ffffff;
+  border-color: #51237c;
+  color: #51237c;
+  font-weight: 500;
+  padding: 0.45rem 1.2rem;
+}
+
+/* BOTÃO ESVAZIAR – hover */
+.btn-outline-danger:hover {
+  background-color: #51237c;
+  border-color: #51237c;
+  color: #ffffff;
+}
