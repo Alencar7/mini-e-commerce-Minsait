@@ -1,0 +1,51 @@
+/* em telas médias: deixa os botões mais compactos */
+@media (max-width: 768px) {
+  .product-actions .btn {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.45rem;
+  }
+}
+
+/* em telas pequenas: empilha os botões */
+@media (max-width: 576px) {
+  .product-actions {
+    justify-content: flex-start;
+  }
+  .product-actions .btn {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+}
+
+/* botoes */
+/* add */
+.product-actions .btn-success {
+  background-color: #ffffff;
+  border-color: #632497;
+  color: #632497;
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 0.35rem 0.9rem;
+}
+
+.product-actions .btn-success:hover {
+  background-color: #6b0792;
+  border-color: #6b0792;
+  color: #ffffff;
+}
+
+/* edit */
+.product-actions .btn-secondary {
+  background-color: #ffffff;
+  border-color: #51237c;
+  color: #51237c;
+  font-weight: 600;
+  font-size: 0.8rem;
+  padding: 0.35rem 0.9rem;
+}
+
+.product-actions .btn-secondary:hover {
+  background-color: #51237c;
+  border-color: #51237c;
+  color: #ffffff;
+}

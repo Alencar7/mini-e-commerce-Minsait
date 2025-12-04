@@ -13,16 +13,21 @@
       <td>{{ item.name }}</td>
       <td>{{ item.price | currency : "BRL" }}</td>
       <td>{{ item.barcode }}</td>
+
       <td class="text-end">
-        <button class="btn btn-sm btn-success me-2" (click)="onAddToCart(item)">
-          Adicionar ao Carrinho
-        </button>
-        <button class="btn btn-sm btn-secondary me-2" (click)="onEdit(item)">
-          Editar
-        </button>
-        <button class="btn btn-sm btn-danger" (click)="onDelete(item)">
-          Excluir
-        </button>
+        <div class="product-actions d-flex flex-wrap justify-content-end gap-2">
+          <button class="btn btn-sm btn-success" (click)="onAddToCart(item)">
+            Adicionar ao Carrinho
+          </button>
+
+          <button class="btn btn-sm btn-secondary" (click)="onEdit(item)">
+            Editar
+          </button>
+
+          <button class="btn btn-sm btn-danger" (click)="onDelete(item)">
+            Excluir
+          </button>
+        </div>
       </td>
     </tr>
     }
