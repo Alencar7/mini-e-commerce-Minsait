@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { CartItem } from '../models/cart-item.model';
-import { CartService } from '../cart.service';
+import { CartService } from '../services/cart.service';
 import { Router } from '@angular/router';
 
 @Component({

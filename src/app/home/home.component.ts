@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ProductService } from '../product.service';
+import { ProductService } from '../services/product.service';
 import { Product } from '../models/product.model';
 
 type ProductCard = Product & { imageUrl: string };
