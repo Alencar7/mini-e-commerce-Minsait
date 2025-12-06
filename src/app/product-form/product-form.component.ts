@@ -52,7 +52,6 @@ export class ProductFormComponent implements OnInit {
       next: (product) => {
         console.log('Produto carregado:', product);
 
-        // this.form.patchValue(product);
         this.form.patchValue({
           name: product.name,
           price: product.price,

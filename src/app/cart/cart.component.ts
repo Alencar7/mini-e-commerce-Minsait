@@ -15,6 +15,7 @@ export class CartComponent implements OnInit {
   cartItems: CartItem[] = [];
   total: number = 0;
   isProcessing: boolean = false;
+  purchaseSuccess = false;
 
   constructor(
     private readonly cartService: CartService,
@@ -47,14 +48,26 @@ export class CartComponent implements OnInit {
       return;
     }
 
-    this.isProcessing = false;
-    // simular o processo de compra
+    this.isProcessing = true;
+
     setTimeout(() => {
       this.isProcessing = false;
-      this.router.navigate(['']);
-    }, 2000);
+      this.cartService.clearCart();
+      this.purchaseSuccess = true; // ⬅️ NOVA LINHA
 
-    alert('Compra realizada com sucesso!');
-    this.cartService.clearCart();
+      setTimeout(() => {
+        this.router.navigate(['']);
+      }, 2000);
+    }, 1500);
+
+    // this.isProcessing = false;
+    // // simular o processo de compra
+    // setTimeout(() => {
+    //   this.isProcessing = false;
+    //   this.router.navigate(['']);
+    // }, 2000);
+
+    // alert('Compra realizada com sucesso!');
+    // this.cartService.clearCart();
   }
 }
