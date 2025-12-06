@@ -140,16 +140,16 @@ Este projeto foi desenvolvido como **trabalho final da Capacitação Minsait**, 
 ```text
 src/
   app/
-    header/          -> Navbar com título e contador do carrinho
-    footer/          -> Rodapé fixo no fim da página
-    home/            -> Página inicial com atalhos de navegação
-    product-list/    -> Tela de listagem de produtos
-    product-form/    -> Tela de cadastro/edição (Reactive Form)
     cart/            -> Tela de itens do carrinho
-    product-table/   -> Tabela reutilizável de produtos
+    footer/          -> Rodapé fixo no fim da página
+    header/          -> Navbar com título e contador do carrinho
+    home/            -> Página inicial com atalhos de navegação
     models/
       product.model.ts
       cart-item.model.ts
+    product-form/    -> Tela de cadastro/edição (Reactive Form)
+    product-list/    -> Tela de listagem de produtos
+    product-table/   -> Tabela reutilizável de produtos
     services/
       product.service.ts
       cart.service.ts
