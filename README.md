@@ -237,7 +237,7 @@ A aplicação consome os seguintes endpoints da API Java:
 }
 ```
 
-### 🔐 Acesso do frontend às rotas de produtos
+### Acesso do frontend às rotas de produtos
 
 A API de produtos é protegida por **Spring Security + JWT**, mas as rotas de produtos foram liberadas para que o frontend possa consumir os dados sem autenticação.
 
@@ -250,9 +250,9 @@ Nesta classe, é importante garantir que exista a seguinte regra:
 ```java
 // Rotas públicas para o e-commerce (consumidas pelo frontend Angular)
 .requestMatchers("/v1/products/**").permitAll()
+```
 
-
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **Angular 18** (standalone components)
 - **TypeScript**
@@ -265,6 +265,7 @@ Nesta classe, é importante garantir que exista a seguinte regra:
 ---
 
 ### Requisitos Funcionais
+
 - Listagem de produtos da API
 - Tabela de produtos como componente isolado (com @Input e @Output)
 - Botão "Adicionar ao Carrinho" em cada produto
@@ -276,6 +277,7 @@ Nesta classe, é importante garantir que exista a seguinte regra:
 - Header com contador de itens atualizado automaticamente
 
 ### Requisitos Técnicos
+
 - **ProductService** exclusivo para chamadas HTTP
 - **CartService** exclusivo para gerenciar estado do carrinho
 - Interface `Product` com tipagem forte (sem `any`)
@@ -288,17 +290,21 @@ Nesta classe, é importante garantir que exista a seguinte regra:
 ## Decisões Técnicas
 
 ### Por que BehaviorSubject no CartService?
+
 Escolhi `BehaviorSubject` ao invés de `Subject` para que novos inscritos recebam o último valor emitido automaticamente (estado inicial do carrinho ao carregar a página).
 
 ### Por que Reactive Forms?
+
 Mais poderoso que Template-Driven Forms para validações complexas, melhor controle programático e fácil integração com a API.
 
 ### Por que LocalStorage?
+
 - Simplicidade e atende o requisito do projeto
 - Não requer autenticação de usuário
 - Dados persistem mesmo após fechar o navegador
 
 ### Standalone Components (Angular 18)
+
 Utilizei a nova abordagem de componentes standalone do Angular 18, eliminando a necessidade de módulos (NgModule), tornando o código mais modular e simples.
 
 ---
@@ -318,7 +324,7 @@ Utilizei a nova abordagem de componentes standalone do Angular 18, eliminando a 
 - Adicionar paginação na listagem
 - Implementar autenticação de usuários
 - Sincronizar carrinho com backend
--  Adicionar imagens aos produtos
+- Adicionar imagens aos produtos
 - Implementar finalização de compra
 - Adicionar testes unitários (80%+ cobertura)
 
@@ -327,17 +333,19 @@ Utilizei a nova abordagem de componentes standalone do Angular 18, eliminando a 
 ## Desenvolvido por
 
 **[Adriano Rodrigues de Alencar]**
+
 - GitHub: [@Alencar7](https://github.com/Alencar7)
 - LinkedIn: [Adriano R. de Alencar](www.linkedin.com/in/dev-adrianodealencar)
 - Email: dinhoalencaraa@gmail.com || contato.adealencar@gmail.com
 
 ---
 
-## 📝 Licença
-
 Este projeto foi desenvolvido para fins educacionais como parte da **Capacitação Minsait**.
 
 ---
 
-**Projeto desenvolvido com muita paciencia, muita raiva e MUITO café!**
+**Projeto desenvolvido com muita paciência, muita raiva e MUITO café!**
+
+```
+
 ```
