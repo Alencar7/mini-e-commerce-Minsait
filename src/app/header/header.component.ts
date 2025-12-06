@@ -12,10 +12,9 @@ import { CartService } from '../services/cart.service';
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  //obsevable para monitorar a quantidade de itens no carrinho
   cartCount$: Observable<number>;
 
   constructor(private readonly cartService: CartService) {
-    this.cartCount$ = this.cartService.cartCount$; //resgatei a fucao do service
+    this.cartCount$ = this.cartService.cartCount$;
   }
 }

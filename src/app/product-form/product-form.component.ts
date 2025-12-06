@@ -80,7 +80,6 @@ export class ProductFormComponent implements OnInit {
     };
 
     if (this.isEditMode && this.productId != null) {
-      // Adicionar o ID ao produto para o update
       const productToUpdate: Product = {
         ...productBase,
         id: this.productId,
@@ -88,7 +87,6 @@ export class ProductFormComponent implements OnInit {
 
       this.productService.updateProduct(productToUpdate).subscribe({
         next: () => {
-          //alert('Produto atualizado com sucesso!');
           this.router.navigate(['/products']);
         },
         error: (error: HttpErrorResponse) => {
@@ -97,7 +95,6 @@ export class ProductFormComponent implements OnInit {
         },
       });
     } else {
-      // modo criacao
       const productToCreate: Product = {
         name: productBase.name,
         price: productBase.price,
@@ -121,7 +118,6 @@ export class ProductFormComponent implements OnInit {
     this.router.navigate(['/products']);
   }
 
-  // Getters
   get name() {
     return this.form.get('name');
   }

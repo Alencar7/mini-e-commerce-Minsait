@@ -1,10 +1,8 @@
-/* form mais compacto e centraliz */
 .container {
   max-width: 640px;
   margin-top: 1.5rem;
 }
 
-/* title */
 h1.h4 {
   margin: 0 0 1rem 0;
   font-weight: 700;
@@ -40,7 +38,6 @@ h1.h4 {
   margin-top: 1.25rem;
 }
 
-/* cancelar */
 .btn-secondary {
   background-color: #e4e2e2e8;
   border-color: #51237c;
@@ -55,7 +52,6 @@ h1.h4 {
   color: #ffffff;
 }
 
-/* cadastrar / salvar */
 .btn-primary {
   background-color: #51237c;
   border-color: #51237c;

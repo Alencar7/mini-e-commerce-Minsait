@@ -1,7 +1,6 @@
-/* hero */
 .hero-box {
-  width: 95%; /* ocupa toda a largura do .container */
-  max-width: 100%; /* garante que não fique travado em 820px */
+  width: 95%;
+  max-width: 100%;
   margin: 0 auto;
   background-color: #4304969f;
   border-radius: 0.75rem;
@@ -24,7 +23,6 @@
   color: #ffffff;
 }
 
-/* cards */
 .product-card {
   border-radius: 1rem;
   border: 0;
@@ -48,7 +46,6 @@
 
 .product-card .card-body {
   padding: 0.6rem 0.75rem 0.5rem;
-  /* topo   lados     baixo  */
 }
 
 .product-card__price {
@@ -67,20 +64,19 @@
   border-color: #51237c;
 }
 
-/* botao add-product */
 .btn-add-product {
-  background-color: #ebebebab; /* roxo padrão */
+  background-color: #ebebebab;
   border-color: #51237c;
   color: #51237c;
   font-weight: 600;
   padding: 0.5rem 1.5rem;
-  border-radius: 500px; /* pílula */
+  border-radius: 500px;
   transition: background-color 0.25s ease, border-color 0.25s ease,
     box-shadow 0.25s ease;
 }
 
 .btn-add-product:hover {
-  background-color: #51237c; /* roxo um pouco mais forte */
+  background-color: #51237c;
   color: #ffffff;
   border-color: #51237c;
   box-shadow: 0 8px 18px rgba(67, 4, 150, 0.35);
