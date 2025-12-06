@@ -41,8 +41,6 @@ export class CartComponent implements OnInit {
     this.cartService.updateQuantity(productId, quantity);
   }
 
-  //extra
-  // add funcao de compra
   onBuy() {
     if (!this.cartItems.length || this.isProcessing) {
       return;
@@ -53,21 +51,11 @@ export class CartComponent implements OnInit {
     setTimeout(() => {
       this.isProcessing = false;
       this.cartService.clearCart();
-      this.purchaseSuccess = true; // ⬅️ NOVA LINHA
+      this.purchaseSuccess = true;
 
       setTimeout(() => {
         this.router.navigate(['']);
       }, 2000);
     }, 1500);
-
-    // this.isProcessing = false;
-    // // simular o processo de compra
-    // setTimeout(() => {
-    //   this.isProcessing = false;
-    //   this.router.navigate(['']);
-    // }, 2000);
-
-    // alert('Compra realizada com sucesso!');
-    // this.cartService.clearCart();
   }
 }

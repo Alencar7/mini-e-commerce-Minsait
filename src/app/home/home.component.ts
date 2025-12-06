@@ -14,7 +14,6 @@ type ProductCard = Product & { imageUrl: string };
 export class HomeComponent implements OnInit {
   productCards: ProductCard[] = [];
 
-  // imagens fictícias
   private productImages: string[] = [
     'sgalaxy.webp',
     'notedell.webp',
@@ -26,7 +25,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getAllProducts().subscribe((products) => {
-      // pega só 4 produtos para a home
       this.productCards = products.slice(0, 4).map((p, index) => ({
         ...p,
         imageUrl: this.productImages[index] ?? 'assets/produto-default.webp',
@@ -35,7 +33,6 @@ export class HomeComponent implements OnInit {
   }
 
   goToProducts() {
-    // por enquanto só abre a página de produtos
     this.router.navigate(['/products']);
   }
 

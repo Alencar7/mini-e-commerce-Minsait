@@ -59,12 +59,6 @@ export class ProductListComponent implements OnInit {
   onDelete(product: Product) {
     if (!product.id) return;
 
-    // tratamento de teste
-    // const confirmar = confirm(
-    //   `Tem certeza que deseja excluir o produto "${product.name}"?`
-    // );
-    // if (!confirmar) return;
-
     this.productService.deleteProduct(product.id).subscribe({
       next: () => {
         this.products = this.products.filter((p) => p.id !== product.id);
