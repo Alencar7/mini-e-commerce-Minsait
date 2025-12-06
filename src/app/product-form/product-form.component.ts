@@ -23,10 +23,10 @@ export class ProductFormComponent implements OnInit {
   productId?: number;
 
   constructor(
-    private fb: FormBuilder,
-    private productService: ProductService,
-    private router: Router,
-    private route: ActivatedRoute
+    private readonly fb: FormBuilder,
+    private readonly productService: ProductService,
+    private readonly router: Router,
+    private readonly route: ActivatedRoute
   ) {
     this.form = this.fb.group({
       name: ['', Validators.required],
@@ -54,9 +54,9 @@ export class ProductFormComponent implements OnInit {
 
         // this.form.patchValue(product);
         this.form.patchValue({
-          nome: product.name,
-          preco: product.price,
-          codigoBarras: product.barcode,
+          name: product.name,
+          price: product.price,
+          barcode: product.barcode,
         });
       },
       error: (error: HttpErrorResponse) => {
@@ -73,8 +73,7 @@ export class ProductFormComponent implements OnInit {
       return;
     }
 
-    //const product: Product = this.form.value as Product;
-    const product: Product = {
+    const productBase: Product = {
       id: this.productId,
       name: this.form.value.name,
       price: this.form.value.price,
@@ -84,7 +83,7 @@ export class ProductFormComponent implements OnInit {
     if (this.isEditMode && this.productId != null) {
       // Adicionar o ID ao produto para o update
       const productToUpdate: Product = {
-        ...product,
+        ...productBase,
         id: this.productId,
       };
 
@@ -99,7 +98,14 @@ export class ProductFormComponent implements OnInit {
         },
       });
     } else {
-      this.productService.createProduct(product).subscribe({
+      // modo criacao
+      const productToCreate: Product = {
+        name: productBase.name,
+        price: productBase.price,
+        barcode: productBase.barcode,
+      };
+
+      this.productService.createProduct(productToCreate).subscribe({
         next: () => {
           this.router.navigate(['/products']);
         },
@@ -116,7 +122,7 @@ export class ProductFormComponent implements OnInit {
     this.router.navigate(['/products']);
   }
 
-  // Getters for form controls to access in template
+  // Getters
   get name() {
     return this.form.get('name');
   }

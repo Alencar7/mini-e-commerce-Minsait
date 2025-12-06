@@ -8,30 +8,26 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class ProductService {
-  //endpoint da API
   private apiUrl = `${environment.apiUrl}`;
 
   constructor(private http: HttpClient) {}
 
-  //get all products
   getAllProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.apiUrl}/`); // GET /v1/products/
+    return this.http.get<Product[]>(`${this.apiUrl}/`);
   }
-  //get product by id
+
   getProductById(id: number): Observable<Product> {
-    return this.http.get<Product>(`${this.apiUrl}/${id}`); // GET /v1/products/{id}
+    return this.http.get<Product>(`${this.apiUrl}/${id}`);
   }
-  //create product
   createProduct(product: Product): Observable<Product> {
-    return this.http.post<Product>(`${this.apiUrl}/product`, product); // POST /v1/products/product
+    return this.http.post<Product>(`${this.apiUrl}/product`, product);
   }
-  //update product
+
   updateProduct(product: Product): Observable<Product> {
-    // return this.http.put<Product>(`${this.apiUrl}/update/${id}`, product); // PUT /v1/products/update
-    return this.http.put<Product>(`${this.apiUrl}/update`, product); // PUT /v1/products/{id}
+    return this.http.put<Product>(`${this.apiUrl}/update`, product);
   }
-  //delete product
+
   deleteProduct(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`); // DELETE /v1/products/{id}
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }
