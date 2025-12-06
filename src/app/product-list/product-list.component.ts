@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { CurrencyPipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
-import { ProductService } from '../product.service';
+import { ProductService } from '../services/product.service';
 import { Product } from '../models/product.model';
-import { CartService } from '../cart.service';
+import { CartService } from '../services/cart.service';
 import { ProductTableComponent } from '../product-table/product-table.component';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CurrencyPipe, ProductTableComponent],
+  imports: [ProductTableComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.css',
 })
